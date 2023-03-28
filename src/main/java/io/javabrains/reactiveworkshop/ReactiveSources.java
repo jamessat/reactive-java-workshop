@@ -21,13 +21,13 @@ public class ReactiveSources {
     public static Flux<Integer> intNumbersFlux() {
         return Flux
                 .range(1, 10)
-                .delayElements(Duration.ofSeconds(1));
+                .delayElements(Duration.ofMillis(200));
     }
 
     public static Flux<Integer> intNumbersFluxWithException() {
         return Flux
                 .range(1, 10)
-                .delayElements(Duration.ofSeconds(1))
+                .delayElements(Duration.ofMillis(200))
                 .map(e -> {
                     if (e == 5) throw new RuntimeException("An error happened in the flux");
                     return e;
@@ -47,7 +47,7 @@ public class ReactiveSources {
                 new User(4, "Zinedine", "Zidane"),
                 new User(5, "Jürgen", "Klinsmann"),
                 new User(6, "Gareth", "Bale")
-        ).delayElements(Duration.ofSeconds(1));
+        ).delayElements(Duration.ofMillis(200));
     }
 
     public static Mono<User> userMono() {
@@ -68,6 +68,6 @@ public class ReactiveSources {
     public static Flux<Integer> intNumbersFluxWithRepeat() {
         return Flux
                 .just(1, 2, 1, 1, 3, 2, 4, 5, 1)
-                .delayElements(Duration.ofSeconds(1));
+                .delayElements(Duration.ofMillis(200));
     }
 }
